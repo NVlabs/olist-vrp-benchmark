@@ -1,0 +1,9 @@
+This repository relies on different resources that derive different licenses.
+As a result, different licenses correspond to different parts of the repository.
+All three licenses permit free non-commercial use, subject to copyright notices.
+
+1. All data derived from the "Brazilian E-Commerce Public Dataset by Olist" are subject to License CC BY-NC-SA 4.0 (fully specified in the file LICENSE_CC). This includes locations of customers and sellers, and volumes of the ordered packages.
+
+2. All data derived from the OSRM package are subject to the 2-Clause BSD License (fully specified in the file LICENSE_BSD). This includes the road-based driving durations between locations.
+
+3. All the code is subject to NVIDIA Source Code License (fully specified in the file LICENSE_NV). This includes the code that processes the original Kaggle and OSRM data and creates the VRP benchmark; the interfaces that load and convert the data into VRP problem instances; and the code that analyzes the dataset in the file Olist_based_VRP_dataset.ipynb.
