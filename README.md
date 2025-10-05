@@ -47,11 +47,11 @@ positions, distance_matrix, demands, capacities = data_loader.sample_problems(
 #### Load our test and validation problems
 
 We already sampled problem instances intended as a public testing benchmark, in both Rio and Sao-Paulo, for various problem sizes $N$.
-To load them, just unzip `test_problems.zip` into `./data/` directory, and use pickle to load from `./data/test_problems`:
+To load them, just unzip `problem_instances.zip` into `./data/` directory, and use pickle to load from `./data/problem_instances`:
 
 ```
 fname = 'vrp-test-size-100-rio-n_problems-256.pkl'
-with open(f'data/test_problems/{fname}', 'rb') as hh:
+with open(f'data/problem_instances/{fname}', 'rb') as hh:
     dd = pkl.load(hh)
 
 print({k:v.shape for k,v in dd.items()})
@@ -62,7 +62,7 @@ Output:
 ```
 Note: `demands[:,0]` corresponds to the depot and is always 0.
 
-We also provide best-known-solutions (as of 2024), as a reference for the test problems, saved in `test_problems.zip`.
+We also provide best-known-solutions (as of 2024), as a reference for the test problems, saved in `problem_instances.zip`.
 
 
 ## Background: VRP
@@ -154,35 +154,47 @@ coordinates.zip
 ├── sellers_rio.csv
 ├── sellers_sao_paulo.csv
 
-test_problems.zip
+problem_instances.zip
 ├── best_known_solutions
 │   ├── best_known_costs_2024.csv
 │   └── best_known_solutions_2024.pkl
-└── test_problems
-    ├── vrp-test-size-100-rio-n_problems-256.pkl
-    ├── vrp-test-size-100-sp-n_problems-256.pkl
-    ├── vrp-test-size-200-rio-n_problems-256.pkl
-    ├── vrp-test-size-200-sp-n_problems-256.pkl
-    ├── vrp-test-size-300-rio-n_problems-256.pkl
-    ├── vrp-test-size-300-sp-n_problems-256.pkl
-    ├── vrp-test-size-400-rio-n_problems-256.pkl
-    ├── vrp-test-size-400-sp-n_problems-256.pkl
-    ├── vrp-test-size-500-rio-n_problems-256.pkl
-    ├── vrp-test-size-500-sp-n_problems-256.pkl
-    ├── vrp-test-size-50-rio-n_problems-256.pkl
-    ├── vrp-test-size-50-sp-n_problems-256.pkl
-    ├── vrp-validation-size-100-rio-n_problems-64.pkl
-    ├── vrp-validation-size-100-sp-n_problems-64.pkl
-    ├── vrp-validation-size-200-rio-n_problems-64.pkl
-    ├── vrp-validation-size-200-sp-n_problems-64.pkl
-    ├── vrp-validation-size-300-rio-n_problems-64.pkl
-    ├── vrp-validation-size-300-sp-n_problems-64.pkl
-    ├── vrp-validation-size-400-rio-n_problems-64.pkl
-    ├── vrp-validation-size-400-sp-n_problems-64.pkl
-    ├── vrp-validation-size-500-rio-n_problems-64.pkl
-    ├── vrp-validation-size-500-sp-n_problems-64.pkl
-    ├── vrp-validation-size-50-rio-n_problems-64.pkl
-    └── vrp-validation-size-50-sp-n_problems-64.pkl
+├── problem_instances
+│   ├── vrp-test-size-20-rio-n_problems-256.pkl
+│   ├── vrp-test-size-20-sp-n_problems-256.pkl
+│   ├── vrp-test-size-30-rio-n_problems-256.pkl
+│   ├── vrp-test-size-30-sp-n_problems-256.pkl
+│   ├── vrp-test-size-50-rio-n_problems-256.pkl
+│   ├── vrp-test-size-50-sp-n_problems-256.pkl
+│   ├── vrp-test-size-100-rio-n_problems-256.pkl
+│   ├── vrp-test-size-100-sp-n_problems-256.pkl
+│   ├── vrp-test-size-200-rio-n_problems-256.pkl
+│   ├── vrp-test-size-200-sp-n_problems-256.pkl
+│   ├── vrp-test-size-300-rio-n_problems-256.pkl
+│   ├── vrp-test-size-300-sp-n_problems-256.pkl
+│   ├── vrp-test-size-400-rio-n_problems-256.pkl
+│   ├── vrp-test-size-400-sp-n_problems-256.pkl
+│   ├── vrp-test-size-500-rio-n_problems-256.pkl
+│   ├── vrp-test-size-500-sp-n_problems-256.pkl
+│   ├── vrp-train-size-20-rio-n_problems-1000.pkl
+│   ├── vrp-train-size-20-sp-n_problems-1000.pkl
+│   ├── vrp-train-size-30-rio-n_problems-1000.pkl
+│   ├── vrp-train-size-30-sp-n_problems-1000.pkl
+│   ├── vrp-validation-size-20-rio-n_problems-64.pkl
+│   ├── vrp-validation-size-20-sp-n_problems-64.pkl
+│   ├── vrp-validation-size-30-rio-n_problems-64.pkl
+│   ├── vrp-validation-size-30-sp-n_problems-64.pkl
+│   ├── vrp-validation-size-50-rio-n_problems-64.pkl
+│   ├── vrp-validation-size-50-sp-n_problems-64.pkl
+│   ├── vrp-validation-size-100-rio-n_problems-64.pkl
+│   ├── vrp-validation-size-100-sp-n_problems-64.pkl
+│   ├── vrp-validation-size-200-rio-n_problems-64.pkl
+│   ├── vrp-validation-size-200-sp-n_problems-64.pkl
+│   ├── vrp-validation-size-300-rio-n_problems-64.pkl
+│   ├── vrp-validation-size-300-sp-n_problems-64.pkl
+│   ├── vrp-validation-size-400-rio-n_problems-64.pkl
+│   ├── vrp-validation-size-400-sp-n_problems-64.pkl
+│   ├── vrp-validation-size-500-rio-n_problems-64.pkl
+│   └── vrp-validation-size-500-sp-n_problems-64.pkl
 ```
 
 
