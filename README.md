@@ -200,7 +200,7 @@ problem_instances.zip
 
 ## Cite us
 
-This dataset is published by NVIDIA as part of the paper ***Accelerating Vehicle Routing via AI-Initialized Genetic Algorithms***.
+This dataset is published by NVIDIA as part of the paper [***Accelerating Vehicle Routing via AI-Initialized Genetic Algorithms***](https://arxiv.org/abs/2504.06126).
 To cite:
 
 ```
