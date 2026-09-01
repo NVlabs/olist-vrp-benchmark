@@ -47,12 +47,13 @@ positions, distance_matrix, demands, capacities = data_loader.sample_problems(
 #### Load our test and validation problems
 
 We already sampled problem instances intended as a public testing benchmark, in both Rio and Sao-Paulo, for various problem sizes $N$.
-To load them, just unzip `problem_instances.zip` into `./data/` directory, and use pickle to load from `./data/problem_instances`:
+To load them, just unzip `problem_instances.zip` into `./data/` directory (SHA256 of the zip: `2b26dc0b51b9b8c4120f59f0cf9f28cd4f4edefaccda36208b71d87ee12d9d90`), and load from `./data/problem_instances` using `data_loader.load_problem_instances` — a restricted loader that only reconstructs numpy data, unlike a plain `pickle.load`, which would execute any code embedded in a tampered file:
 
 ```
+import data_loader
+
 fname = 'vrp-test-size-100-rio-n_problems-256.pkl'
-with open(f'data/problem_instances/{fname}', 'rb') as hh:
-    dd = pkl.load(hh)
+dd = data_loader.load_problem_instances(f'data/problem_instances/{fname}')
 
 print({k:v.shape for k,v in dd.items()})
 ```

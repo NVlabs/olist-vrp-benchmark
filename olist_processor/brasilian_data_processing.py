@@ -3,10 +3,13 @@ Based on the "Brazilian E-Commerce Public Dataset by Olist":
 https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce
 '''
 
+import os
+
 import numpy as np
 import pandas as pd
 
-BASE_PATH = r'/home/igreenberg/code/osrm/data/brasil_e_commerce_dataset'
+# Path to the extracted Kaggle dataset (see module docstring)
+BASE_PATH = os.environ.get('OLIST_DATASET_PATH', r'data/brasil_e_commerce_dataset')
 PATH_ORDERS = f'{BASE_PATH}/olist_orders_dataset.csv'
 PATH_ITEMS = f'{BASE_PATH}/olist_order_items_dataset.csv'
 PATH_PRODUCTS = f'{BASE_PATH}/olist_products_dataset.csv'

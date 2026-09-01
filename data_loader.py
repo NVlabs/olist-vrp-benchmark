@@ -1,7 +1,46 @@
+import pickle
+import re
 import warnings
 
 import numpy as np
 import pandas as pd
+
+_NAME_PATTERN = re.compile(r'^[A-Za-z0-9_\-]+$')
+
+
+def _validate_name(value, param):
+    if not _NAME_PATTERN.match(str(value)):
+        raise ValueError(f'Invalid {param!r}: {value!r} (letters, digits, "_" and "-" only)')
+    return value
+
+
+class _RestrictedUnpickler(pickle.Unpickler):
+    """Unpickler that only reconstructs numpy arrays and builtin containers.
+
+    pickle.load executes arbitrary code embedded in the file; the problem
+    instance files only contain numpy arrays, so everything else is rejected.
+    """
+    _SAFE = {
+        ('numpy', 'ndarray'), ('numpy', 'dtype'),
+        ('numpy.core.multiarray', '_reconstruct'), ('numpy.core.multiarray', 'scalar'),
+        ('numpy._core.multiarray', '_reconstruct'), ('numpy._core.multiarray', 'scalar'),
+    }
+
+    def find_class(self, module, name):
+        if module == 'builtins' and name in ('dict', 'list', 'tuple', 'set',
+                                             'frozenset', 'bytearray', 'complex'):
+            return super().find_class(module, name)
+        if (module, name) in self._SAFE:
+            return super().find_class(module, name)
+        if module == 'numpy.dtypes' and name.endswith('DType'):
+            return super().find_class(module, name)
+        raise pickle.UnpicklingError(f'{module}.{name} is not allowed in problem instance files')
+
+
+def load_problem_instances(fname):
+    """Safely load a problem instances .pkl file (numpy data only)."""
+    with open(fname, 'rb') as hh:
+        return _RestrictedUnpickler(hh).load()
 
 
 def sample_problems(n_problems, n_nodes, real_data=None, capacity=160, drone_mode=False, round_to_milliliter=True,
@@ -24,6 +63,8 @@ def sample_problems(n_problems, n_nodes, real_data=None, capacity=160, drone_mod
 
 
 def load_real_data(area='sao_paulo', label='train', base_path=r'data'):
+    _validate_name(area, 'area')
+    _validate_name(label, 'label')
     # load distance matrices
     all_customer_distances = np.load(f'{base_path}/distances_{area}_{label}.npy')
     depots_distances = np.load(f'{base_path}/cross_distances_{area}_{label}.npz')
