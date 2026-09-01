@@ -6,6 +6,7 @@
 #include <vector>
 #include <string>
 #include <sstream>
+#include <cstdlib>
 
 /*
 Compilation:
@@ -34,8 +35,9 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
+    const char* osrm_data_path = std::getenv("OSRM_DATA_PATH");
     osrm::EngineConfig config;
-    config.storage_config = {"/home/igreenberg/code/osrm/data/sudeste-latest.osrm"};
+    config.storage_config = {osrm_data_path ? osrm_data_path : "data/sudeste-latest.osrm"};
     config.use_shared_memory = false;
     config.algorithm = osrm::EngineConfig::Algorithm::MLD;
     const osrm::OSRM osrm{config};
