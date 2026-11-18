@@ -201,14 +201,18 @@ problem_instances.zip
 
 ## Cite us
 
-This dataset is published by NVIDIA as part of the paper [***Accelerating Vehicle Routing via AI-Initialized Genetic Algorithms***](https://arxiv.org/abs/2504.06126).
+This dataset is published by NVIDIA as part of the paper [***Reinforcement learning for initializing genetic algorithms in vehicle routing***](https://www.nature.com/articles/s44488-026-00019-7) (Communications AI & Computing, 2026).
 To cite:
 
 ```
-@article{EARLI25,
-  title={Accelerating Vehicle Routing via AI-Initialized Genetic Algorithms},
+@article{EARLI26,
+  title={Reinforcement learning for initializing genetic algorithms in vehicle routing},
   author={Greenberg, Ido and Sielski, Piotr and Linsenmaier, Hugo and Gandham, Rajesh and Mannor, Shie and Fender, Alex and Chechik, Gal and Meirom, Eli},
-  journal={arXiv preprint},
-  year={2025}
+  journal={Communications AI \& Computing},
+  volume={1},
+  number={1},
+  pages={17},
+  year={2026},
+  doi={10.1038/s44488-026-00019-7}
 }
 ```
